@@ -1,2 +1,3 @@
-mobile edition of somesongsarebetter.com/hits
-uses custom API that returns personal song data
+- mobile edition of somesongsarebetter.com/hits
+- uses custom API that returns personal song data
+- displays nicely formatted in single table view
