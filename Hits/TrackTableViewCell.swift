@@ -10,8 +10,8 @@ import UIKit
 
 class TrackTableViewCell: UITableViewCell {
     
-    var rank = UILabelFactory(text: "rank").fontSize(of: 14).textColor(of: .lightGray).build()
-    var name = UILabelFactory(text: "name").build()
+    var rank = UILabelFactory(text: "").fontSize(of: 14).textColor(of: .lightGray).build()
+    var name = UILabelFactory(text: "name").adjustable().build()
     var artist = UILabelFactory(text: "artist").fontSize(of: 16).textColor(of: .lightGray).build()
 
     var album: UIImageView = {
@@ -70,14 +70,13 @@ class TrackTableViewCell: UITableViewCell {
         album.heightAnchor.constraint(equalToConstant: 90).isActive = true
         album.widthAnchor.constraint(equalToConstant: 90).isActive = true
         
-        name.leadingAnchor.constraint(equalTo: album.trailingAnchor, constant: 20).isActive = true
+        name.leadingAnchor.constraint(equalTo: album.trailingAnchor, constant: 12).isActive = true
         name.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
-        name.topAnchor.constraint(equalTo: rank.bottomAnchor, constant: 20).isActive = true
-        name.heightAnchor.constraint(equalToConstant: 25).isActive = true
-
-        artist.leadingAnchor.constraint(equalTo: album.trailingAnchor, constant: 20).isActive = true
+        name.centerYAnchor.constraint(equalTo: contentView.topAnchor, constant: 64).isActive = true
+        
+        artist.leadingAnchor.constraint(equalTo: album.trailingAnchor, constant: 12).isActive = true
         artist.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
-        artist.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 10).isActive = true
+        artist.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 6).isActive = true
         artist.heightAnchor.constraint(equalToConstant: 20).isActive = true
     }
 }

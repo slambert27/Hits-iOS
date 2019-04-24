@@ -38,4 +38,13 @@ struct UILabelFactory {
         
         return self
     }
+    
+    func adjustable() -> UILabelFactory {
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.8
+        label.numberOfLines = 2
+        label.sizeToFit()
+
+        return self
+    }
 }
