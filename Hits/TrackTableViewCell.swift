@@ -54,13 +54,14 @@ class TrackTableViewCell: UITableViewCell {
     
     func setImage(with tracks: [Track], at index: Int) {
         if tracks[index].albumArt == nil {
-            return
+            self.album.image = UIImage()
+        } else {
+            NetworkRequest().retrieveImage(from: tracks[index].albumArt!, completionHandler: { (img: UIImage) -> () in
+                DispatchQueue.main.async {
+                    self.album.image = img
+                }
+            })
         }
-        NetworkRequest().retrieveImage(from: tracks[index].albumArt!, completionHandler: { (img: UIImage) -> () in
-            DispatchQueue.main.async {
-                self.album.image = img
-            }
-        })
     }
     
     private func setupLabels() {
