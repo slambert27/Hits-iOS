@@ -21,8 +21,7 @@ class TracksViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.register(TrackTableViewCell.self, forCellReuseIdentifier: cellId)
-        
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+
         tableView.backgroundColor = .black
         
         NetworkRequest().retrieveTracks {
@@ -54,6 +53,14 @@ class TracksViewController: UITableViewController {
         if let validTracks = tracks?.tracks {
             cell.setTrackAttributes(with: validTracks, at: indexPath.row)
             cell.setImage(with: validTracks, at: indexPath.row)
+            
+            if (indexPath.row < tracks!.tracks.count - 1) &&
+                (tracks!.tracks[indexPath.row].rating != tracks!.tracks[indexPath.row + 1].rating) {
+                
+                cell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+            } else {
+                cell.separatorInset = UIEdgeInsets(top: 0, left: 1000, bottom: 0, right: 0)
+            }
         }
         
         return cell
@@ -61,7 +68,13 @@ class TracksViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 150;//Choose your custom row height
+        if (indexPath.row < tracks!.tracks.count - 1) &&
+            (tracks!.tracks[indexPath.row].rating != tracks!.tracks[indexPath.row + 1].rating) {
+            
+            return 150
+        } else {
+            return 125
+        }
     }
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {

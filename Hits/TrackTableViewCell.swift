@@ -38,7 +38,16 @@ class TrackTableViewCell: UITableViewCell {
      A function that sets the text for all labels of a TrackTableViewCell from index of Tracks list
     */
     func setTrackAttributes(with tracks: [Track], at index: Int) {
-        rank.text = String(index + 1)
+        
+        if index == 0 {
+            rank.text = String(index + 1)
+        }
+        else if tracks[index].rating != tracks[index - 1].rating {
+            rank.text = String(index + 1)
+        } else {
+            rank.text = ""
+        }
+        
         name.text = tracks[index].name
         artist.text = tracks[index].artist
     }
