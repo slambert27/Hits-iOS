@@ -13,6 +13,8 @@ class TracksViewController: UITableViewController {
     let cellId = "cell"
     var tracks: Tracks?
     
+    var errorView = ErrorView()
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -24,16 +26,18 @@ class TracksViewController: UITableViewController {
 
         tableView.backgroundColor = .black
         
-        NetworkRequest().retrieveTracks {
+        NetworkRequest().retrieveTracks(completionHandler: {
             tracks in
             self.tracks = tracks
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-        }
+        }, errorHandler: {
+            DispatchQueue.main.async {
+                self.showErrorView()
+            }
+        })
     }
-
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -79,5 +83,13 @@ class TracksViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         return nil
+    }
+    
+    func showErrorView() {
+        tableView.addSubview(self.errorView)
+        errorView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
+        errorView.centerYAnchor.constraint(equalTo: tableView.centerYAnchor).isActive = true
+        errorView.heightAnchor.constraint(equalToConstant: tableView.frame.height).isActive = true
+        errorView.widthAnchor.constraint(equalToConstant: tableView.frame.width).isActive = true
     }
 }

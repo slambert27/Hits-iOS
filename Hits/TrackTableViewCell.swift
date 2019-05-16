@@ -20,6 +20,8 @@ class TrackTableViewCell: UITableViewCell {
         image.clipsToBounds = true
         image.backgroundColor = .lightGray
         image.translatesAutoresizingMaskIntoConstraints = false
+        image.accessibilityIdentifier = "album image view"
+        image.isAccessibilityElement = true
         return image
     }()
     
@@ -27,6 +29,10 @@ class TrackTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         backgroundColor = .black
+        accessibilityIdentifier = "track cell"
+        rank.accessibilityIdentifier = "rank"
+        name.accessibilityIdentifier = "track name"
+        artist.accessibilityIdentifier = "artist name"
         setupLabels()
     }
     

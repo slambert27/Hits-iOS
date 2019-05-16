@@ -16,6 +16,8 @@
 		ACE0BD86226D410A0078C081 /* TracksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0BD81226D410A0078C081 /* TracksViewController.swift */; };
 		ACE0BD87226D410A0078C081 /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0BD82226D410A0078C081 /* TrackTableViewCell.swift */; };
 		ACE0BD88226D410A0078C081 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0BD83226D410A0078C081 /* NetworkRequest.swift */; };
+		B1A974D2228DB1C200C1F9D5 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A974D1228DB1C200C1F9D5 /* ErrorView.swift */; };
+		B1A974D4228DBB8A00C1F9D5 /* XCUIApplicationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A974D3228DBB8A00C1F9D5 /* XCUIApplicationExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		ACE0BD81226D410A0078C081 /* TracksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TracksViewController.swift; sourceTree = "<group>"; };
 		ACE0BD82226D410A0078C081 /* TrackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
 		ACE0BD83226D410A0078C081 /* NetworkRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		B1A974D1228DB1C200C1F9D5 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		B1A974D3228DBB8A00C1F9D5 /* XCUIApplicationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCUIApplicationExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,7 @@
 			children = (
 				ACE0BD45226D3FC90078C081 /* AppDelegate.swift */,
 				ACE0BD81226D410A0078C081 /* TracksViewController.swift */,
+				B1A974D1228DB1C200C1F9D5 /* ErrorView.swift */,
 				ACE0BD82226D410A0078C081 /* TrackTableViewCell.swift */,
 				ACE0BD7F226D410A0078C081 /* UILabelFactory.swift */,
 				ACE0BD80226D410A0078C081 /* Tracks.swift */,
@@ -130,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				ACE0BD65226D3FCB0078C081 /* HitsUITests.swift */,
+				B1A974D3228DBB8A00C1F9D5 /* XCUIApplicationExtensions.swift */,
 				ACE0BD67226D3FCB0078C081 /* Info.plist */,
 			);
 			path = HitsUITests;
@@ -284,6 +290,7 @@
 				ACE0BD86226D410A0078C081 /* TracksViewController.swift in Sources */,
 				ACE0BD85226D410A0078C081 /* Tracks.swift in Sources */,
 				ACE0BD46226D3FC90078C081 /* AppDelegate.swift in Sources */,
+				B1A974D2228DB1C200C1F9D5 /* ErrorView.swift in Sources */,
 				ACE0BD88226D410A0078C081 /* NetworkRequest.swift in Sources */,
 				ACE0BD84226D410A0078C081 /* UILabelFactory.swift in Sources */,
 			);
@@ -301,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1A974D4228DBB8A00C1F9D5 /* XCUIApplicationExtensions.swift in Sources */,
 				ACE0BD66226D3FCB0078C081 /* HitsUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

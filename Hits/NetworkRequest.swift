@@ -12,22 +12,33 @@ struct NetworkRequest {
     
     private let tracksURL = URL(string: "http://somesongsarebetter.com/hits/v1/tracks")
     
-    func retrieveTracks(completionHandler: @escaping (_ tracks: Tracks) -> ()) {
-        if let url = tracksURL {
-            let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-                if error != nil || data == nil {
-                    //handle error
-                    print(error ?? "no data")
-                    return
-                }
-                guard let tracks = try? JSONDecoder().decode(Tracks.self, from: data!) else {
-                    //handle error
-                    print("Error: Couldn't decode data into Tracks")
-                    return
-                }
-                completionHandler(tracks)
-            })
-            task.resume()
+    func retrieveTracks(completionHandler: @escaping (_ tracks: Tracks) -> (), errorHandler: @escaping () -> ()) {
+        if ProcessInfo.processInfo.environment["mockTracks"] == nil {
+            if let url = tracksURL {
+                let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+                    if error != nil || data == nil {
+                        //handle error
+                        errorHandler()
+                        return
+                    }
+                    guard let tracks = try? JSONDecoder().decode(Tracks.self, from: data!) else {
+                        //handle error
+                        errorHandler()
+                        return
+                    }
+                    completionHandler(tracks)
+                })
+                task.resume()
+            }
+        }
+        else {
+            let string = ProcessInfo.processInfo.environment["mockTracks"]
+            let data = string?.data(using: .ascii)
+            guard let tracks = try? JSONDecoder().decode(Tracks.self, from: data!) else {
+                errorHandler()
+                return
+            }
+            completionHandler(tracks)
         }
     }
     
